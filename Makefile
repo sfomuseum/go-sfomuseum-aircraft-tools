@@ -40,3 +40,4 @@ fmt:
 bin: 	self
 	rm -rf bin/*
 	@GOPATH=$(GOPATH) go build -o bin/build-sfomuseum-data cmd/build-sfomuseum-data.go
+	@GOPATH=$(GOPATH) go build -o bin/build-icao-data cmd/build-icao-data.go

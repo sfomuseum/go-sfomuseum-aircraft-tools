@@ -24,7 +24,7 @@ type AircraftDataVars struct {
 func RenderAircraftData(wr io.Writer, vars *AircraftDataVars) error {
 
 	now := time.Now()
-	
+
 	vars.LastUpdate = now.Format(time.RFC3339)
 
 	t := gotemplate.New("data")
