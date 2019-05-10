@@ -10,6 +10,7 @@ import (
 	"github.com/whosonfirst/go-whosonfirst-geojson-v2/properties/whosonfirst"
 	"github.com/whosonfirst/go-whosonfirst-geojson-v2/utils"
 	"github.com/whosonfirst/go-whosonfirst-index"
+	index_utils "github.com/whosonfirst/go-whosonfirst-index/utils"
 	"io"
 	"log"
 	"os"
@@ -26,6 +27,16 @@ func main() {
 	mu := new(sync.RWMutex)
 
 	cb := func(fh io.Reader, ctx context.Context, args ...interface{}) error {
+
+		is_principal, err := index_utils.IsPrincipalWOFRecord(fh, ctx)
+
+		if err != nil {
+			return err
+		}
+
+		if !is_principal {
+			return nil
+		}
 
 		f, err := feature.LoadFeatureFromReader(fh)
 

@@ -41,3 +41,6 @@ bin: 	self
 	rm -rf bin/*
 	@GOPATH=$(GOPATH) go build -o bin/build-sfomuseum-data cmd/build-sfomuseum-data.go
 	@GOPATH=$(GOPATH) go build -o bin/build-icao-data cmd/build-icao-data.go
+
+sfomuseum-data:
+	bin/build-sfomuseum-data > /usr/local/sfomuseum/go-sfomuseum-aircraft/sfomuseum/data.go
