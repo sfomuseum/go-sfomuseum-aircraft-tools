@@ -44,6 +44,8 @@ func main() {
 			return err
 		}
 
+		// TO DO: https://github.com/sfomuseum/go-sfomuseum-aircraft-tools/issues/1
+		
 		wof_id := whosonfirst.Id(f)
 		name := whosonfirst.Name(f)
 
