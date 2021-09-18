@@ -1,15 +1,9 @@
-fmt:
-	# go fmt *.go
-	go fmt cmd/build-sfomuseum-data/main.go
-	go fmt cmd/build-icao-data/main.go
-	go fmt template/*.go
-
-tools:
+cli:
 	go build -o bin/build-sfomuseum-data cmd/build-sfomuseum-data/main.go
 	go build -o bin/build-icao-data cmd/build-icao-data/main.go
 
 data:
-	@make tools
+	@make cli
 	@make sfomuseum-data
 
 sfomuseum-data:

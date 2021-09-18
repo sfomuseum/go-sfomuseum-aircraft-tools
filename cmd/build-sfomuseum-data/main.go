@@ -4,100 +4,31 @@ import (
 	"context"
 	"encoding/json"
 	"flag"
+	tools "github.com/sfomuseum/go-sfomuseum-aircraft-tools"
 	"github.com/sfomuseum/go-sfomuseum-aircraft-tools/template"
-	"github.com/sfomuseum/go-sfomuseum-aircraft/sfomuseum"
-	"github.com/sfomuseum/go-sfomuseum-geojson/feature"
-	"github.com/whosonfirst/go-whosonfirst-geojson-v2/properties/whosonfirst"
-	"github.com/whosonfirst/go-whosonfirst-geojson-v2/utils"
-	"github.com/whosonfirst/go-whosonfirst-index"
-	index_utils "github.com/whosonfirst/go-whosonfirst-index/utils"
-	"io"
 	"log"
 	"os"
-	"sync"
 )
 
 func main() {
 
-	data := flag.String("data", "/usr/local/data/sfomuseum-data-aircraft", "...")
+	iterator_uri := flag.String("iterator-uri", "repo://", "...")
+	iterator_source := flag.String("iterator-source", "/usr/local/data/sfomuseum-data-aircraft", "...")
 
 	flag.Parse()
 
-	lookup := make([]sfomuseum.Aircraft, 0)
-	mu := new(sync.RWMutex)
+	ctx := context.Background()
 
-	cb := func(fh io.Reader, ctx context.Context, args ...interface{}) error {
-
-		is_principal, err := index_utils.IsPrincipalWOFRecord(fh, ctx)
-
-		if err != nil {
-			return err
-		}
-
-		if !is_principal {
-			return nil
-		}
-
-		f, err := feature.LoadFeatureFromReader(fh)
-
-		if err != nil {
-			return err
-		}
-
-		// TO DO: https://github.com/sfomuseum/go-sfomuseum-aircraft-tools/issues/1
-		
-		wof_id := whosonfirst.Id(f)
-		name := whosonfirst.Name(f)
-
-		sfom_id := utils.Int64Property(f.Bytes(), []string{"properties.sfomuseum:aircraft_id"}, -1)
-
-		concordances, err := whosonfirst.Concordances(f)
-
-		if err != nil {
-			return err
-		}
-
-		a := sfomuseum.Aircraft{
-			WOFID:       wof_id,
-			SFOMuseumID: int(sfom_id),
-			Name:        name,
-		}
-
-		code, ok := concordances["icao:designator"]
-
-		if ok {
-			a.ICAODesignator = code
-		}
-
-		id, ok := concordances["wd:id"]
-
-		if ok {
-			a.WikidataID = id
-		}
-
-		mu.Lock()
-		lookup = append(lookup, a)
-		mu.Unlock()
-
-		return nil
-	}
-
-	idx, err := index.NewIndexer("repo", cb)
+	lookup, err := tools.CompileAircraftData(ctx, *iterator_uri, *iterator_source)
 
 	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = idx.IndexPath(*data)
-
-	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to compile aircraft data, %v", err)
 	}
 
 	enc, err := json.Marshal(lookup)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to marshal results, %w", err)
 	}
 
 	vars := template.AircraftDataVars{
@@ -108,6 +39,6 @@ func main() {
 	err = template.RenderAircraftData(os.Stdout, &vars)
 
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to return data, %w", err)
 	}
 }
