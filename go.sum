@@ -34,6 +34,8 @@ github.com/sfomuseum/go-edtf v0.2.3/go.mod h1:1rP0EJZ/84j3HO80vGcnG2T9MFBDAFyTNt
 github.com/sfomuseum/go-flags v0.7.0/go.mod h1:ML3DTNbF9xnjExSdS/9FtVLjIUhRU5gm/ehzISv+t2w=
 github.com/sfomuseum/go-sfomuseum-aircraft v0.1.0 h1:DO6+DuFFZeI8hb1h/oG2+RGhAjqB9DcPoq9LMTYoCHk=
 github.com/sfomuseum/go-sfomuseum-aircraft v0.1.0/go.mod h1:B86mzyGDCK21XOQht4HbM45XZCbKHfuXZ+OLCPjmS+k=
+github.com/sfomuseum/go-sfomuseum-aircraft v0.1.1 h1:q00IEv0MNmnhG7W65xSCB2N+5DnDmIybmz8DojvGUeI=
+github.com/sfomuseum/go-sfomuseum-aircraft v0.1.1/go.mod h1:B86mzyGDCK21XOQht4HbM45XZCbKHfuXZ+OLCPjmS+k=
 github.com/sfomuseum/go-sfomuseum-aircraft v0.1.8 h1:MzRbkOUHkU4e5T0uHGqBfNvIsprwLRp+9qNIevYZRdc=
 github.com/sfomuseum/go-sfomuseum-aircraft v0.1.8/go.mod h1:B86mzyGDCK21XOQht4HbM45XZCbKHfuXZ+OLCPjmS+k=
 github.com/sfomuseum/go-sfomuseum-aircraft v0.3.1 h1:aEzn6nvMHN27pIWyy2uaf0mCE5tuNCjB5yvsPXjSNnE=
