@@ -20,11 +20,12 @@ github.com/sfomuseum/go-edtf/level2
 github.com/sfomuseum/go-edtf/parser
 github.com/sfomuseum/go-edtf/re
 github.com/sfomuseum/go-edtf/tests
-# github.com/sfomuseum/go-sfomuseum-aircraft v0.1.8
+# github.com/sfomuseum/go-sfomuseum-aircraft v0.3.1
 ## explicit
 github.com/sfomuseum/go-sfomuseum-aircraft
+github.com/sfomuseum/go-sfomuseum-aircraft/data
 github.com/sfomuseum/go-sfomuseum-aircraft/sfomuseum
-# github.com/sfomuseum/go-sfomuseum-geojson v0.1.2
+# github.com/sfomuseum/go-sfomuseum-geojson v0.1.3
 ## explicit
 github.com/sfomuseum/go-sfomuseum-geojson/feature
 # github.com/skelterjohn/geom v0.0.0-20180103142417-96f3e8a219c5
@@ -39,7 +40,7 @@ github.com/tidwall/pretty
 github.com/whosonfirst/go-ioutil
 # github.com/whosonfirst/go-whosonfirst-crawl v0.2.1
 github.com/whosonfirst/go-whosonfirst-crawl
-# github.com/whosonfirst/go-whosonfirst-flags v0.4.2
+# github.com/whosonfirst/go-whosonfirst-flags v0.4.3
 github.com/whosonfirst/go-whosonfirst-flags
 github.com/whosonfirst/go-whosonfirst-flags/existential
 # github.com/whosonfirst/go-whosonfirst-geojson-v2 v0.16.3
@@ -65,7 +66,7 @@ github.com/whosonfirst/go-whosonfirst-sources
 github.com/whosonfirst/go-whosonfirst-sources/sources
 # github.com/whosonfirst/go-whosonfirst-spr/v2 v2.0.0
 github.com/whosonfirst/go-whosonfirst-spr/v2
-# github.com/whosonfirst/go-whosonfirst-uri v0.2.0
+# github.com/whosonfirst/go-whosonfirst-uri v1.1.0
 ## explicit
 github.com/whosonfirst/go-whosonfirst-uri
 # github.com/whosonfirst/walk v0.0.1
